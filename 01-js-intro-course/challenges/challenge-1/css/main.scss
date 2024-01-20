@@ -1,0 +1,65 @@
+:root {
+  --background-color: #242C38;
+  --text-color: white;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  height: 100vh;
+  font-family: 'Poppins';
+  font-size: 35px;
+}
+
+.container {
+  width: 50vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  align-items: center;
+}
+.c-left {
+  align-items: center;
+  justify-content: end;
+  text-align: right;
+}
+
+.separator {
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+
+.name {
+  margin-top: 1em;
+  font-weight: 800;
+}
+
+.cta {
+  display: flex;
+  text-decoration: none;
+  color: white;
+
+  svg {
+    width: 40px;
+    margin-left: 0.5em;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:hover circle {
+    fill: white;
+  }
+
+  &:hover path {
+    fill: #242C38;
+  }
+}
