@@ -63,3 +63,20 @@ body {
     fill: #242C38;
   }
 }
+
+.mask {
+  overflow: hidden;
+}
+
+.details {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: #677A98;
+    font-size: 0.7em;
+  }
+}

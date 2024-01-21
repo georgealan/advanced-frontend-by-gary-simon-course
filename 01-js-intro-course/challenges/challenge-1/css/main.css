@@ -59,4 +59,18 @@ body {
 }
 .cta:hover path {
   fill: #242C38;
+}
+
+.mask {
+  overflow: hidden;
+}
+
+.details ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.details a {
+  color: #677A98;
+  font-size: 0.7em;
 }/*# sourceMappingURL=main.css.map */
