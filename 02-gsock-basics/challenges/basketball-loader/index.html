@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <img src="ball.svg" alt="Basketball vector graphic">
+
+    <div class="mask"><h1>welcome.</h1></div>
+
+    <div class="loader"></div>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        const ball = document.querySelector('img')
+        const header = document.querySelector('h1')
+        const loader = document.querySelector('.loader')
+        document.body.style.cursor = 'pointer'
+
+        // Set objects first positions in the canvas
+        gsap.set(ball, {
+            yPercent: -600, // Will be above the canvas outside of the viewport -600% high
+            rotationZ: -295 // Rotate the ball graphic
+        })
+
+        gsap.set(header, {
+            yPercent: -100 // Same as the other elements, put it high in -100%
+        })
+
+        gsap.set(loader, {
+            scaleX: 0 // Line begins at 0
+        })
+
+        // Start animations To from
+        let animation = gsap.to(ball, {
+            duration: 2,
+            ease: "bounce.out",
+            yPercent: -50,
+            onComplete: textAndLoaderAnimation,
+            paused: true
+        })
+
+        function textAndLoaderAnimation() {
+            gsap.to(header, {
+              yPercent: 0, // Set to zere means that the object will be in the original place.
+              ease: "back.out(1.7)"  
+            })
+
+            gsap.to(loader, {
+                scaleX: 1,
+                duration: 2
+            })
+        }
+
+        window.addEventListener('click', () => {
+            animation.play()
+        })
+
+    </script>
+</body>
+</html>

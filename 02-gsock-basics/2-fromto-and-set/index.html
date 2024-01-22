@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From and To</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <p>luxury</p>
+    </div>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const container = document.querySelector('.container')
+
+        
+
+        let tween = gsap.to(container, {
+            borderRadius: '2%',
+            width: '20vw',
+            height: '28vw',
+            paused: true
+        })
+
+        let tween2 = gsap.to('p', {
+            fontSize: 'clamp(5rem, 5vw, 10rem)',
+            x: 0,
+            paused: true
+        })
+
+        container.addEventListener('mouseenter', () => {
+            console.log('Its working George in mouse enter')
+            tween.play()
+            tween2.play()
+        })
+        
+        container.addEventListener('mouseleave', () => {
+            console.log('Its working George in mouse leave')
+            tween.reverse()
+            tween2.reverse()
+        })
+
+    </script>
+</body>
+</html>
