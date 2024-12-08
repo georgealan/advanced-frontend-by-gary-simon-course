@@ -25,28 +25,29 @@
     <script>
         const timeline = gsap.timeline({ defaults: { ease: 'power4.inOut', duration: .4 }})
 
-        timeline.to(['.fade1', '.fade2', '.fade3'], {
-            scaleY: 1,
-            stagger: .2
-        })
-        .to('h1', {
-            x: 0,
-            duration: 2,
-            ease: 'elastic.out(1, 0.5)'
-        }, '-=.5')
-        .to('.fade1', {
-            scaleY: 0
-        })
-        .to('.fade3', {
-            scaleY: 0,
-            transformOrigin: 'bottom'
-        }, '-=.5')
-        .to('.fade2', {
-            height: '100vh'
-        }, '-=.5')
-        .to('h1', {
-            scale: .6
-        }, '-=.5')
+        timeline
+            .to(['.fade1', '.fade2', '.fade3'], {
+                scaleY: 1,
+                stagger: .2
+            })
+            .to('h1', {
+                x: 0,
+                duration: 2,
+                ease: 'elastic.out(1, 0.5)'
+            }, '-=.5') // This -=.5 is to make the h1 animation start .5 seconds before the previous animation ends
+            .to('.fade1', {
+                scaleY: 0
+            })
+            .to('.fade3', {
+                scaleY: 0,
+                transformOrigin: 'bottom'
+            }, '-=.5')
+            .to('.fade2', {
+                height: '100vh'
+            }, '-=.5')
+            .to('h1', {
+                scale: .6
+            }, '-=.5')
 
     </script>
 </body>

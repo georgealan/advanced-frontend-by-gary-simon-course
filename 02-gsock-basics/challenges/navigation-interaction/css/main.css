@@ -55,11 +55,17 @@ ul a p.primary, ul a p.secondary {
 ul a p.primary {
   transform: translateY(50%);
 }
+ul a p.date {
+  transform: translateY(170%);
+}
 ul a .line {
   position: absolute;
   top: 50%;
   left: 0;
   width: 3%;
   border-bottom: 1px solid white;
+  transform: scaleX(0);
   transform-origin: left;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -67,6 +67,44 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        const links = gsap.utils.toArray('li a')
+        // Use gsap.utils.toArray to convert the NodeList to an array is better than
+        // use document.querySelectorAll('li a') because it's more performant and 
+        // bring us an clean array [], not a NodeList
+        
+        links.forEach(link => {
+            let linkTl = gsap.timeline({ defaults: { ease: 'power4.inOut', duration: .6 } })
+            
+            const primaryText = link.querySelector('.primary')
+            const secondaryText = link.querySelector('.secondary')
+            const date = link.querySelector('.date')
+            const line = link.querySelector('.line')
+
+            linkTl
+                .to(primaryText, {
+                   yPercent: -100, 
+                })
+                .to(secondaryText, {
+                   yPercent: -50, 
+                }, '<') // < means play at the same time as the previous tween
+                .to(line, {
+                    scaleX: 1,
+                }, '<')
+                .to(date, {
+                    y: 0,
+                }, '<')
+            
+            linkTl.pause()
+
+            link.addEventListener('mouseenter', () => {
+                linkTl.play()
+            })
+            
+            link.addEventListener('mouseleave', () => {
+                linkTl.reverse()
+            })
+
+        })
 
 
 
