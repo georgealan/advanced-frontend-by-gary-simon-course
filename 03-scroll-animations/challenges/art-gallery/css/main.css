@@ -24,8 +24,7 @@ ul {
 
 img {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 a {
@@ -34,8 +33,7 @@ a {
   position: relative;
 }
 a img {
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 a .border {
   margin: 0.5em 0;
@@ -70,4 +68,6 @@ section.gallery ul {
   display: grid;
   place-content: center;
   background: rgb(237, 237, 255);
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */
