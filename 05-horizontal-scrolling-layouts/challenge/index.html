@@ -81,6 +81,7 @@
         const sections = gsap.utils.toArray('.slider section')
         const fishies = gsap.utils.toArray('.fish-container img')
 
+        // Setting up the gsap timeline
         let tl = gsap.timeline({
             defaults: {
                 ease: 'none'
@@ -94,13 +95,14 @@
             },
         })
 
+        // Scrolling the three horizontal sections that are hidden by the overflow-x
         tl
         .to(slider, {
             xPercent: -66,
         }, "<")
         
         sections.forEach((stop, index) => {
-            
+            // Dealing with the text section
             tl
             .from(stop.querySelector('.content'), {
                 yPercent: -50,
@@ -114,6 +116,27 @@
                 }
             })
 
+            // Big image commig in from the right
+            .from(stop.querySelector('img'), {
+                xPercent: 40,
+                yPercent: -100,
+                ease: 'elastic.out(1,1)',
+                scrollTrigger: {
+                    trigger: stop.querySelector('img'),
+                    scrub: 2,
+                    containerAnimation: tl
+                }
+            }, "<")
+        })
+
+        // Small Fishies
+        fishies.forEach((fish, i) => {
+            gsap.from(fish, {
+               xPercent: fish.dataset.distance,
+               scrollTrigger: {
+                scrub: 0.3,
+               }
+            })
         })
 
         // smooth scroll
