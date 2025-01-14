@@ -33,8 +33,9 @@
                 </div>
             </main>
             <div class="right-col"></div>
-            <img src="shoe1.png" alt="Lifting Shoe X100">
+            <img src="images/shoe1.png" alt="Lifting Shoe X100">
         </section>
+
         <section data-bg-color="white">
             <main>
                 <div class="content">
@@ -49,8 +50,9 @@
                 </div>
             </main>
             <div class="right-col red"></div>
-            <img src="shoe2.png" alt="Lifting Shoe X200">
+            <img src="images/shoe2.png" alt="Lifting Shoe X200">
         </section>
+
         <section data-bg-color="#E9E9E9">
             <main>
                 <div class="content">
@@ -65,7 +67,7 @@
                 </div>
             </main>
             <div class="right-col dark"></div>
-            <img src="shoe3.png" alt="Lifting Shoe X300">
+            <img src="images/shoe3.png" alt="Lifting Shoe X300">
         </section>
     </div>
 
@@ -77,6 +79,55 @@
 
         const slider = document.querySelector('.slider')
         const sections = gsap.utils.toArray(".slider section") 
+
+        let tl = gsap.timeline({
+            defaults: {
+                ease: 'none'
+            },
+            scrollTrigger: {
+                trigger: slider,
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + slider.offsetWidth
+            }
+        })
+
+        sections.forEach((stop, index) => {
+            tl
+                .to(sections, {
+                    xPercent: -(100 * index),
+                    duration: index,
+                    scrollTrigger: {
+                        snap: 1 / (sections.length - 1)
+                    }
+                }, "<")
+                .to('.inner', {
+                    scaleX: 1,
+                    scrollTrigger: {
+                        scrub: 0.3333
+                    }
+                })
+                .from(stop.querySelector("h1"), {
+                    yPercent: 135,
+                    ease: 'power4.inOut'
+                })
+                .from(stop.querySelector("p"), {
+                    yPercent: 50,
+                    opacity: 0
+                }, "<")
+                .from(stop.querySelector("img"), {
+                    opacity: 0,
+                    y: 50
+                }, "<")
+                .to('body', {
+                    backgroundColor: stop.dataset.bgColor
+                })
+                .from(stop.querySelector(".right-col"), {
+                    scaleY: 0,
+                    transformOrigin: 'bottom'
+                })
+                
+        })
 
 
         // smooth scroll
